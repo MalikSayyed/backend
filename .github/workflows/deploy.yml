@@ -1,16 +1,16 @@
 
-name: prod-Server
+name: dev-Server
 
 on:
   push:
     branches:
-      - main
+      - dev
     tags:
       - v*
   pull_request:
 
 env:
-  IMAGE_NAME: prod-server
+  IMAGE_NAME: dev-server
 
 jobs:
   build:
@@ -37,7 +37,7 @@ jobs:
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-          [ "$VERSION" == "main" ] && VERSION=latest
+          [ "$VERSION" == "dev" ] && VERSION=latest
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
@@ -51,7 +51,7 @@ jobs:
       - name: Executing remote SSH commands using SSH key
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.PROD_SERVER_URL }}
+          host: ${{ secrets.DEV_SERVER_URL }}
           username: ubuntu
-          key: ${{ secrets.PROD_SSH_KEY }}
+          key: ${{ secrets.DEV_SSH_KEY }}
           script: sh deploy-backend.sh
