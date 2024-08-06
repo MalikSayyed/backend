@@ -51,7 +51,7 @@ jobs:
       - name: Executing remote SSH commands using SSH key
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.DEV_SERVER_URL }}
+          host: ${{ secrets.PROD_SERVER_URL }}
           username: ubuntu
-          key: ${{ secrets.DEV_SSH_KEY }}
+          key: ${{ secrets.PROD_SSH_KEY }}
           script: sh deploy-backend.sh
