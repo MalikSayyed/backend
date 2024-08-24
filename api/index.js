@@ -24,7 +24,7 @@ app.use(
 
 // app.us(cors());
 
-// Middleware
+// Middle ware
 app.use(bodyParser.json());
 console.log("Mongo URI inside express a",process.env.MONGO_URI);
 // Connect to MongoDB
