@@ -1,6 +1,4 @@
-
-name: staging-Server
-
+name: staging-server
 on:
   push:
     branches:

@@ -44,6 +44,6 @@ app.get("/", (req, res) => {
   res.send("code working fine");
 });
 
-// Start server
+// Startserver
 const PORT = process.env.PORT || 8087;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
