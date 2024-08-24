@@ -22,7 +22,7 @@ app.use(
   })
 );
 
-// app.use(cors());
+// app.us(cors());
 
 // Middleware
 app.use(bodyParser.json());
